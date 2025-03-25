@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: vprodb
+  namespace: vns
   labels:
     app: vprodb
 spec:
@@ -16,7 +17,7 @@ spec:
     spec:
       containers:
       - name: vprodb
-        image: vprocontainers/vprofiledb
+        image: kalai25/devdb
         volumeMounts:
         - mountPath: /var/lib/mysql
           name: vpro-db-data
