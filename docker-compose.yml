@@ -3,7 +3,7 @@ services:
   vprodb:
     build:
       context: ./Docker-files/db
-    image: kalai25/devdb
+    image: kalai25/dev1db
     container_name: vprodb
     ports:
       - "3306:3306"
