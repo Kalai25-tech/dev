@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: vproapp
-        image: kalai25/devapp
+        image: kalai25/devapp:0.1
         imagePullPolicy: Always
         ports:
         - name: vproapp-port
