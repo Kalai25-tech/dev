@@ -1,5 +1,5 @@
 FROM maven:3.9.9-eclipse-temurin-21-jammy AS BUILD_IMAGE
-RUN git clone https://github.com/Kalai25-tech/dev.git
+RUN git clone https://github.com/Kalai25-tech/dev.git /app
 RUN cd dev && git checkout dev && mvn install
 
 FROM tomcat:10-jdk21
