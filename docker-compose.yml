@@ -1,23 +1,23 @@
 version: '3.8'
 services:
-  vprodb:
+  vision_db:
     build:
       context: ./Docker-files/db
     image: kalai25/devdb
-    container_name: vprodb
+    container_name: vision_db
     ports:
       - "3306:3306"
     volumes:
-      - vprodbdata:/var/lib/mysql
+      - vision_dbdata:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=vprodbpass
+      - MYSQL_ROOT_PASSWORD=vision_dbpass
 
-  vprocache01:
+  vision_cache01:
     image: memcached
     ports:
       - "11211:11211"
 
-  vpromq01:
+  vision_mq01:
     image: rabbitmq
     ports:
       - "5672:5672"
@@ -25,24 +25,24 @@ services:
       - RABBITMQ_DEFAULT_USER=guest
       - RABBITMQ_DEFAULT_PASS=guest
 
-  vproapp:
+  vision_app:
     build:
       context: ./Docker-files/app
     image: kalai25/devapp:0.1
-    container_name: vproapp
+    container_name: vision_app
     ports:
       - "8080:8080"
     volumes:
-      - vproappdata:/usr/local/tomcat/webapps
+      - vision_appdata:/usr/local/tomcat/webapps
 
-  vproweb:
+  vision_web:
     build:
       context: ./Docker-files/web
     image: kalai25/devweb
-    container_name: vproweb
+    container_name: vision_web
     ports:
       - "80:80"
 
 volumes:
-   vprodbdata: {}
-   vproappdata: {}
+   vision_dbdata: {}
+   vision_appdata: {}
